@@ -60,30 +60,41 @@ class watchController extends Controller
         return view('student.detail',compact('product'));
     }
 
-    public function prodect($id)
+    public function prodect(Request $req ,$id)
     {
         $product  = product::find($id);
         $cart = session()->get('carts',[]);
-
-        $cart[$id] = array('image' => $product->image,'name' => $product->name,'price' => $product->price,'id' => $product->id);
+        $cartid = new cart();
+        $cartid->prod_id = $product->id;
+        $cartid->name = $product->name;
+        $cartid->price = $product->price;
+        $cartid->image = $product->image;
+        $cartid->save();
+        $cart[$id] = array('image' => $cartid->image,'name' => $cartid->name,'price' => $cartid->price,'id' => $cartid->prod_id);
         session()->put('carts',$cart);
 
         return redirect()->back()->with('succes','add cart secces');
 
     }
 
-   public function delet($id){
-    $product  = product::find($id);
-    $cart = session()->get('carts',[]);
-
-    $cart[$id] = array('image' => $product->image,'name' => $product->name,'price' => $product->price,'id' => $product->id)->delete();
-    session()->put('carts',$cart);
-
-    return redirect()->back();
-
-   }
+   public function delet(Request $req){
+        $cart = session()->get('carts');
+        $insertdel = $req->input('idprod');
+        $cart = cart::where('id',$insertdel)->exists();
+        $cart->delete();
+        session()->put('carts',$cart);
+        return response()->json(['status' => $cart]);    
+   
+        }
         
-  }
+   }
+
+
+
+
+ 
+
+
 
 
 

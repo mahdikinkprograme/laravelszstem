@@ -78,12 +78,15 @@ class watchController extends Controller
     }
 
    public function delet(Request $req){
+        $insertdel = $req->input('prod_id');
         $cart = session()->get('carts');
-        $insertdel = $req->input('idprod');
-        $cart = cart::where('id',$insertdel)->exists();
-        $cart->delete();
-        session()->put('carts',$cart);
-        return response()->json(['status' => $cart]);    
+        //dd($insertdel);
+        if(isset($cart[$insertdel])){
+            unset($cart[$insertdel]); 
+            session()->put('carts',$cart);
+            return response()->json(['status' => 'delete succes']);   
+
+           }
    
         }
         

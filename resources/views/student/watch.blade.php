@@ -90,8 +90,8 @@
                                       <i class='bx bx-plus' ></i>
                                   </span>
                               </div>
-                              <a class='bx bx-trash-alt cart__amount-trash' href="{{ url('deletcart/'.$id) }}"></a>
-                          </div>
+                         <a class='bx bx-trash-alt cart__amount-trash delcart' data-cartid ="{{$prods['prod_id']}}"></a>
+                       </div>
                       </div>
                   </article>  
               </div>

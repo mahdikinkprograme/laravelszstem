@@ -24,7 +24,7 @@ Route::get('/index', [watchController::class, 'indexs']);
 Route::post('/index', [watchController::class, 'form']);
 
 Route::get('/carts/{id}', [watchController::class,'prodect']);
-Route::get('/deletcart/{id}', [watchController::class,'delet']);
+Route::delete('/deletcart', [watchController::class,'delet']);
 
 Auth::routes();
 

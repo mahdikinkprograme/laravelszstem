@@ -69,8 +69,9 @@ class watchController extends Controller
         $cartid->name = $product->name;
         $cartid->price = $product->price;
         $cartid->image = $product->image;
+        $cartid->prod_qty = $req->input('prod_qty');
         $cartid->save();
-        $cart[$id] = array('image' => $cartid->image,'name' => $cartid->name,'price' => $cartid->price,'id' => $cartid->prod_id);
+        $cart[$id] = array('image' => $cartid->image,'name' => $cartid->name,'price' => $cartid->price,'prod_id' => $cartid->prod_id,'prod_qty'=> $cartid->prod_qty);
         session()->put('carts',$cart);
 
         return redirect()->back()->with('succes','add cart secces');

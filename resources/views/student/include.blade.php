@@ -97,7 +97,7 @@
 <!--==================== CART ====================-->
     <script src="{{asset('admin/js/swiper-bundle.min.js')}}"></script>
  <!--=============== MAIN JS ===============-->
-    <script src="{{asset('admin/js/main.js')}}"></script>
+    <script src="{{asset('admin/js/includ.js')}}"></script>
     <script src="{{asset('admin/js/jquery-3.6.4.min.js')}}"></script>
     <script src="{{asset('admin/js/watch.js')}}"></script>
 

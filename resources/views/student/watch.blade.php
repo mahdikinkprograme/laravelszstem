@@ -85,7 +85,7 @@
                                   <span class="cart__amount-box">
                                       <i class='bx bx-minus' ></i>
                                   </span>
-                                  <span class="cart__amount-number">1</span>
+                                  <span class="cart__amount-number">{{$prods['prod_qty']}}</span>
                                   <span class="cart__amount-box">
                                       <i class='bx bx-plus' ></i>
                                   </span>
